@@ -1,7 +1,7 @@
 from googletrans import Translator
 translator = Translator()
 language = 'ko'
-text = "hi"
+text = "Good morning"
 print(translator.translate(text,src="en" ,dest = language).text)
 
 
