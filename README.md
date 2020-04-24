@@ -16,6 +16,7 @@ Prerequisites:
 
 -Download Tesseract (Go to https://github.com/UB-Mannheim/tesseract/wiki and download the latest installer (version 5 at the time). Next, go to https://tesseract.patagames.com/langs/ and select the language file(s) you need if you are working with non-English language material.)
  Note: tesseract path should be added to your .py file
+  
   pytesseract.pytesseract.tesseract_cmd = r'C:\Your_Path\Tesseract-OCR\tesseract.exe'
 
  -PyQt5 (-- pip install pyqt5)
