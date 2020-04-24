@@ -8,7 +8,7 @@ A mobile application used to translate different words from different languages 
 • A multi-language translation service developed by GoogleTrans Python Library to translate text from one language to another covering 100+ languages.
 
 
-#Prerequisites:
+Prerequisites:
 
 -Python 3 (Go to https://www.python.org/downloads/)
 
