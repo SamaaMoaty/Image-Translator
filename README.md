@@ -9,6 +9,7 @@ Demo Video: www.youtube.com
 
 ## Desktop Interface 
    Using PyQt5
+   >Import desktop Interface in PyCharm
 
 ### Prerequisities:
 
@@ -26,5 +27,6 @@ Demo Video: www.youtube.com
   >-- pip install GoogleTrans
 
 ## Mobile Application 
-  Using Java
+  Using Java 
+  >Import Mobile App Folder in Android Studio
 
