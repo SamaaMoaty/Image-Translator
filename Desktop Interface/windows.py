@@ -16,14 +16,15 @@ import pytesseract
 
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Your_Path\Tesseract-OCR\tesseract.exe"
-
 class mainWindow:
     def __init__(self) -> None:
         super().__init__()
+        # self.app = QtWidgets.QApplication(sys.argv)
         self.window3 = QtWidgets.QMainWindow()
         self.init_ui()
-    
- # Initializing Window Components
+        #self.imageCaptureDelegate = ImageCapture()
+
+        # Samaa
 
     def init_ui(self) -> None:
         self.__stylingWindowOne()
@@ -36,11 +37,11 @@ class mainWindow:
         img_transl.clicked[bool].connect(self.imag_trans)
         img_transl.setGeometry(50, 370, 180, 40)
         img_transl.setStyleSheet("background-color:#3700B3 ; font : 12px;font-weight: bold ; color : #fff")
-        
+        #img_transl.setIcon(QtGui.QIcon("img_trans.png"))
 
         self.window3.show()
-        
-# Styling Window Components
+
+        # Samaa :Styling function
 
     def __stylingWindowOne(self):
         self.window3.setWindowIcon(QtGui.QIcon("home.png"))
@@ -62,13 +63,9 @@ class mainWindow:
         logo_label.setPixmap(logo2)
         #self.resize(logo.width(), logo.height())
 
- #Load Image Translator Window
-
     def imag_trans(self):
         self.window = TranslatorGUI()
         self.window3.hide()
-  
-  #Load Text Translator Window
 
     def trans(self):
         self.window1 = text_trans()
@@ -79,32 +76,31 @@ class mainWindow:
 class TranslatorGUI (QWidget):
     """Subclass of QWidget that serves as the main window and interface for the application.
     """
-
+   
     def __init__(self) -> None:
 
         super().__init__()
-        #self.app = QtWidgets.QApplication(sys.argv)
+      
         self.window = QtWidgets.QMainWindow()
         self.init_ui()
-        self.imageCaptureDelegate = ImageCapture()
+        self.imageCaptureDelegate = ImageCapture() #call image capture class
 
-    #Samaa
+    #init widow copmponents
     def init_ui(self) -> None:
         self.__stylingWindowOne()
+        
         take_pic_btn = QtWidgets.QPushButton("Capture Image", self.window)
         take_pic_btn.clicked[bool].connect(self.__take_picture)
         take_pic_btn.setGeometry(50,370,180,40)
         take_pic_btn.setStyleSheet("background-color: #3700B3 ; font : 12px ; font-weight: bold ; color : #fff ")
-        #take_pic_btn.setIcon(QtGui.QIcon("Camera.png"))
         slct_img_btn = QPushButton("Select existing Image", self.window)
         slct_img_btn.clicked[bool].connect(self.__select_existing_image)
         slct_img_btn.setGeometry(50,420,180,40)
         slct_img_btn.setStyleSheet("background-color:#3700B3 ; font : 12px; font-weight: bold ; color : #fff")
-        #slct_img_btn.setIcon(QtGui.QIcon("image.png"))
 
-        self.window.show()
+        self.window.show() #showing window
 
-    #Samaa :Styling function
+    #Styling window components
     def __stylingWindowOne (self):
         self.window.setWindowIcon(QtGui.QIcon("home.png"))
         self.window.setWindowTitle("Global Lens")
@@ -124,34 +120,26 @@ class TranslatorGUI (QWidget):
         logo_label.setPixmap(logo2)
         self.resize(logo.width(),logo.height())
 
+    #Launches image capture window, allows user to take image, then loads it.
     def __take_picture(self) -> None:
-        """Launches image capture window, allows user to take image, then loads it.
-        """
-
         image_file_name = self.imageCaptureDelegate.capture_image()
         global path
-
         path = image_file_name
-        print(path)
         self.ImageWindow()
 
-
-    def __select_existing_image(self) -> None:
-        """Launches file dialog box, allows user to select an existing image, then loads it.
-        """
+    #Launches file dialog box, allows user to select an existing image, then loads it.
+    def __select_existing_image(self) -> None: 
         file_dialog = QFileDialog()
-
         image_file_name  = file_dialog.getOpenFileName()
         global path
         path = image_file_name[0]
         self.ImageWindow()
-
+        
+    #Creating new Window
     def ImageWindow(self):
         self.window1 = ImageWindow()
         self.window.hide()
         
-        
-
 
 class ImageWindow(QWidget):
 
@@ -364,12 +352,14 @@ class ImageWindow(QWidget):
         
         
 class TranslatedWindow(QWidget):
+    
+    #Creating Error dialog if no text Recogonised from OCR
     def error(self):
         mydialog = QDialog()
         mydialog.setWindowTitle("Error")
         mydialog.setGeometry(450, 200, 200, 200)
         widget1 = QLabel("No Text Recogonised...", mydialog)
-        widget2 = QPushButton("Try Again", mydialog)
+        widget2 = QPushButton("Try Again", mydialog) #to input another image
         widget1.move(40, 80)
         widget1.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
         widget2.move(110, 160)
