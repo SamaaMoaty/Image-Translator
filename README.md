@@ -7,7 +7,7 @@ Demo Video: www.youtube.com
 
 
 ## Demo
-   ![AppDemo](Mobile App/demo.mp4)
+   ![AppDemo](Mobile App/IMG_8924.JPG)
    
 ## Desktop Interface 
    Using PyQt5
