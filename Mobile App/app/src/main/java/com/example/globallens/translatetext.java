@@ -155,9 +155,9 @@ public class translatetext extends AppCompatActivity {
                  /*Authorization to IBM Service*/
                  Key = "Add your key here";
                  URL = "Add your Translator URL here";
-                 Authenticator authenticator = new IamAuthenticator(Key);
+                 Authenticator authenticator = new IamAuthenticator("Key");
                  LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01", authenticator);
-                 languageTranslator.setServiceUrl(URL);
+                 languageTranslator.setServiceUrl("URL");
 
                  /*Extract Values of shared Variables to enter the translator*/
                  String Txt = translatetext.Original;
