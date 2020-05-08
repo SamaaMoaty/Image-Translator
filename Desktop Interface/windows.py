@@ -16,33 +16,30 @@ import pytesseract
 
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Your_Path\Tesseract-OCR\tesseract.exe"
+
+
 class mainWindow:
     def __init__(self) -> None:
         super().__init__()
-        # self.app = QtWidgets.QApplication(sys.argv)
         self.window3 = QtWidgets.QMainWindow()
         self.init_ui()
-        #self.imageCaptureDelegate = ImageCapture()
-
-        # Samaa
-
+        
+    #Initialize Window Components
     def init_ui(self) -> None:
         self.__stylingWindowOne()
         transl = QtWidgets.QPushButton("Text Translator", self.window3)
         transl.clicked[bool].connect(self.trans)
         transl.setGeometry(50, 420, 180, 40)
         transl.setStyleSheet("background-color: #3700B3 ; font : 12px ;font-weight: bold ; color : #fff")
-        #transl.setIcon(QtGui.QIcon("translate.png"))
         img_transl = QPushButton("Image Translator", self.window3)
         img_transl.clicked[bool].connect(self.imag_trans)
         img_transl.setGeometry(50, 370, 180, 40)
         img_transl.setStyleSheet("background-color:#3700B3 ; font : 12px;font-weight: bold ; color : #fff")
-        #img_transl.setIcon(QtGui.QIcon("img_trans.png"))
-
+        
         self.window3.show()
 
-        # Samaa :Styling function
-
+     
+    #Styling Window Components
     def __stylingWindowOne(self):
         self.window3.setWindowIcon(QtGui.QIcon("home.png"))
         self.window3.setWindowTitle("Global Lens" )
@@ -62,11 +59,13 @@ class mainWindow:
         logo2 = logo.scaled(250, 70)
         logo_label.setPixmap(logo2)
         #self.resize(logo.width(), logo.height())
-
+    
+    #Load Image Translator Window
     def imag_trans(self):
         self.window = TranslatorGUI()
         self.window3.hide()
 
+    #Load Text Translator Window
     def trans(self):
         self.window1 = text_trans()
         self.window3.hide()
@@ -85,7 +84,7 @@ class TranslatorGUI (QWidget):
         self.init_ui()
         self.imageCaptureDelegate = ImageCapture() #call image capture class
 
-    #init widow copmponents
+    #Initialize Window Components
     def init_ui(self) -> None:
         self.__stylingWindowOne()
         
@@ -100,7 +99,7 @@ class TranslatorGUI (QWidget):
 
         self.window.show() #showing window
 
-    #Styling window components
+    #Styling Window Components
     def __stylingWindowOne (self):
         self.window.setWindowIcon(QtGui.QIcon("home.png"))
         self.window.setWindowTitle("Global Lens")
@@ -143,13 +142,14 @@ class TranslatorGUI (QWidget):
 
 class ImageWindow(QWidget):
 
+    #Initializing Window Components
     def __init__(self):
         super().__init__()
 
         self.window1 = QtWidgets.QMainWindow()
         self.window1.setWindowTitle("Image")
         self.window1.setWindowIcon(QtGui.QIcon("image.png"))
-        self.window1.setGeometry(400, 100, 300, 500)  # Samaa
+        self.window1.setGeometry(400, 100, 300, 500) 
         self.window1.setStyleSheet("background-color:#d6d2d2")
 
         global path
@@ -166,18 +166,18 @@ class ImageWindow(QWidget):
         translate_btn.clicked.connect(self.openSecondDialog)
         translate_btn.setGeometry(20, 450, 120, 40)
         translate_btn.setStyleSheet("background-color:#3700B3 ; font : 12px ; color : #fff ")
-        #translate_btn.setIcon(QtGui.QIcon("translate.png"))
         back_btn = QPushButton(" Back" , self.window1)
         back_btn.clicked.connect(self.goBack)
         back_btn.setGeometry(155, 450, 120, 40)
         back_btn.setStyleSheet("background-color: #3700B3 ; font : 16px ; color : #fff")
-        #back_btn.setIcon(QtGui.QIcon("back.png"))
         self.window1.show()
-
+    
+    #Load Main Window
     def goBack(self):
         self.window = mainWindow()
         self.window1.hide()
-
+        
+    #Load Language Dialoge
     def openSecondDialog(self):
         global languages
         languages = QDialog()
@@ -244,25 +244,28 @@ class ImageWindow(QWidget):
         ok.setFixedSize(50,30)
         ok.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
         #ok.clicked.connect(languages.close)
-        ok.clicked.connect(self.translateSara)
+        ok.clicked.connect(self.translate_)
 
         QWidget.setFocus(ok)
 
         languages.exec()
 
+    #Setting Source Language
     def test1(self, src):
         global src_lang
         src_lang = src
 
-
+    #Setting Target Language
     def test2(self, target):
         global target_lang
         target_lang = target
-
-    def translateSara(self):
+        
+    #Encoding Source and Target Languages
+    def translate_(self):
         global target_lang
         global src_lang
-
+        
+        #Error Handling: Missing Source and Traget Languages
         if select_src_language_box.currentIndex() == 0 and select_target_language_box.currentIndex() == 0:
             src_lang = "English"
             target_lang = "English"
@@ -289,7 +292,8 @@ class ImageWindow(QWidget):
             widget3.setFixedSize(70, 40)
             widget3.clicked.connect(error.close)
             error.exec()
-
+            
+        #Error Handling: Missing Source Language
         elif select_src_language_box.currentIndex() == 0:
             src_lang = "English"
             error_src = QDialog()
@@ -315,7 +319,8 @@ class ImageWindow(QWidget):
             widget3.setFixedSize(70,40)
             widget3.clicked.connect(error_src.close)
             error_src.exec()
-
+            
+        #Error Handling: Missing Traget Language
         elif select_target_language_box.currentIndex() == 0:
             target_lang="English"
             error_target = QDialog()
@@ -346,6 +351,7 @@ class ImageWindow(QWidget):
             languages.close()
             self.transition()
 
+    #Load Translation Window
     def transition (self):
         self.window2 = TranslatedWindow()
         self.window1.hide()
@@ -353,7 +359,7 @@ class ImageWindow(QWidget):
         
 class TranslatedWindow(QWidget):
     
-    #Creating Error dialog if no text Recogonised from OCR
+    #Error Handling no text Recogonised from OCR
     def error(self):
         mydialog = QDialog()
         mydialog.setWindowTitle("Error")
@@ -369,7 +375,7 @@ class TranslatedWindow(QWidget):
 
         mydialog.exec()
 
-
+    #Initializing Window Components
     def __init__(self):
         super().__init__()
 
@@ -380,7 +386,8 @@ class TranslatedWindow(QWidget):
         self.window2.setStyleSheet("background-color:#d6d2d2")
 
         global trans_text
-
+        
+        #Translation Languages Encoding
         trans_language_codes = {'Afrikaans': 'af', 'Irish': 'ga', 'Albanian': 'sq', 'Italian': 'it', 'Arabic': 'ar',
                           'Japanese': 'ja', 'Azerbaijani': 'az',
                           'Kannada': 'kn', 'Basque': 'eu', 'Korean': 'ko', 'Bengali': 'bn', 'Latin': 'la',
@@ -400,7 +407,8 @@ class TranslatedWindow(QWidget):
                           'Hebrew': 'iw', 'Ukrainian': 'uk', 'Hindi': 'hi', 'Urdu': 'ur', 'Hungarian': 'hu',
                           'Vietnamese': 'vi', 'Icelandic': 'is',
                           'Welsh': 'y', 'Indonesian': 'id', 'Yiddish': 'yi'}
-
+        
+        #OCR Languages Encoding
         OCR_language_codes = {'Afrikaans': 'afr', 'Irish': 'gle', 'Albanian': 'sqi', 'Italian': 'ita', 'Arabic': "ara",
                                  'Japanese': 'jpn', 'Azerbaijani': 'aze',
                                  'Kannada': 'kan', 'Basque': 'eus', 'Korean': 'kor', 'Bengali': 'ben', 'Latin': 'lat',
@@ -469,7 +477,7 @@ class TranslatedWindow(QWidget):
             back_btn.clicked.connect(self.goBack)
             back_btn.setGeometry(155, 450, 120, 40)
             back_btn.setStyleSheet("background-color: #3700B3; font : 14px;font-weight: bold ; color : #fff")
-            #back_btn.setIcon(QtGui.QIcon("done.png"))
+         
 
             self.window2.show()
 
@@ -485,6 +493,7 @@ class TranslatedWindow(QWidget):
         text = pytesseract.image_to_string(Image.open(filename),config=config)  # We'll use Pillow's Image class to open the image and pytesseract to detect the string in the image
         return text
 
+    #Translation Function using GoogleTrans
     def translate(self, text, source, destination):
         translator = Translator()
         trans_text = translator.translate(text, src=source, dest=destination).text
@@ -494,6 +503,7 @@ class TranslatedWindow(QWidget):
     
     class text_trans():
 
+    #Initializing Window Components
     def __init__(self):
         super().__init__()
 
@@ -533,19 +543,19 @@ class TranslatedWindow(QWidget):
         textbox1.setStyleSheet("background-color:#fff")
         textbox1.setReadOnly(True)
         textbox1.setPlaceholderText("Translated Text...")
-        #self.textbox.appendPlainText("hi")
+       
 
         back_btn = QPushButton("Done", self.window4)
         back_btn.clicked.connect(self.goBack)
         back_btn.setGeometry(155, 450, 120, 40)
         back_btn.setStyleSheet("background-color: #3700B3 ; color : #fff; font : 14px; font-weight: bold ")
-        #back_btn.setIcon(QtGui.QIcon("done.png"))
+        
 
         trans_btn = QPushButton("Translate!", self.window4)
         trans_btn.clicked.connect(self.translate_text)
         trans_btn.setGeometry(20, 450, 120, 40)
         trans_btn.setStyleSheet("background-color:#3700B3; font : 14px;font-weight: bold ; color : #fff")
-        #trans_btn.setIcon(QtGui.QIcon("translate.png"))
+        
 
         global languages2
         languages2 = QDialog()
@@ -610,26 +620,28 @@ class TranslatedWindow(QWidget):
         ok.setFixedSize(50, 30)
         ok.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
         # ok.clicked.connect(languages.close)
-        #ok.clicked.connect(self.translateSara)
-        ok.clicked.connect(self.translateSara)
+        #ok.clicked.connect(self.translate_)
+        ok.clicked.connect(self.translate_)
         QWidget.setFocus(ok)
         self.window4.show()
         languages2.exec()
 
-
+    #Load Main Window
     def goBack(self):
         self.window = mainWindow()
         self.window4.hide()
 
+    #Setting Source Language
     def test1(self, src):
         global src_lang2
         src_lang2 = src
-
+        
+    #Setting Target Language
     def test2(self, target):
         global target_lang2
         target_lang2 = target
 
-    def translateSara(self):
+    def translate_(self):
         global target_lang2
         global src_lang2
 
@@ -739,7 +751,9 @@ class TranslatedWindow(QWidget):
             global src_lang2
             global target_lang2
             self.translate(Tbox.toPlainText(),src_lang2,target_lang2)
-
+            
+      
+    #Translation Function using GoogleTrans
     def translate(self, text, source, destination):
         translator = Translator()
         trans_text = translator.translate(text, src=source, dest=destination).text
