@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GlobalLens</string>
+    <string name="intro">\nWelcome to Global Lens. Your Translator App.</string>
+    <string name="Imagtrans">Image Translator</string>
+    <string name="txttrans">Text Translator</string>
+    <string name="Hello">Hello</string>
+    <string name="existing">Select existing Image</string>
+    <string name="capture">Capture Image</string>
+    <string name="imgeSrc">\nSelect the Image you want to translate</string>
+    <string name="Translate">Extract Text!</string>
+    <string name="Texttranslate">Translate!</string>
+    <string name="srctxt">Type your text here...</string>
+    <string name="trgttxt">Tranlated Text...</string>
+    <string name="text1"> Text :</string>
+    <string name="text2">Translated Text :</string>
+    <string name="ocrtext">Recogonized Text...</string>
+    <string name="ocred">Extracted Text :</string>
+    <string name="Translated_Text">Translated Text :</string>
+    <string name="translatedTextFromOCR">Translated Text...</string>
+    <string name="ocrTrans">Translate!</string>
+</resources>
