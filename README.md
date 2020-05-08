@@ -7,7 +7,7 @@ Demo Video: www.youtube.com
 
 
 ## Demo
-   ![Farmers Market Finder Demo](demo/demo.gif)
+   ![AppDemo](demo.mp4)
    
 ## Desktop Interface 
    Using PyQt5
