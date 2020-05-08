@@ -150,10 +150,12 @@ class Thread1 extends java.lang.Thread{
         synchronized (this) {
             try {
                 /*Authorization to IBM Service*/
-                Authenticator authenticator = new IamAuthenticator("rCQPOsySSTdS0JRmP56Aw6zLnsMktgCsn1Oe7-LQ5RfV");
+                Key = "Add your key here";
+                URL = "Add Translator URL";
+                Authenticator authenticator = new IamAuthenticator(Key);
                 Discovery service = new Discovery("2018-05-01", authenticator);
                 LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01", authenticator);
-                languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/cbd6be82-43a1-4f31-97cd-3f66d5d5db87");
+                languageTranslator.setServiceUrl(URL);
 
                 /*Extract Values of shared Variables to enter the translator*/
                 String Txt = translatedimage.Original;
