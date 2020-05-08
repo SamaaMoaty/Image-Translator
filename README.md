@@ -32,4 +32,6 @@ Demo Video: www.youtube.com
 ## Mobile Application 
   Using Java 
   >Import Mobile App Folder in Android Studio
-
+ - OCR 
+ - IBM Translator
+ >
