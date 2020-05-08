@@ -434,7 +434,8 @@ class TranslatedWindow(QWidget):
         src_lang_OCR = OCR_language_codes[src_lang]
         global detected_text
         detected_text = self.ocr_core(path, src_lang_OCR)
-
+        
+        #Error Handling: No text Detected
         if detected_text is "":
             self.error()
         else:
@@ -497,7 +498,6 @@ class TranslatedWindow(QWidget):
     def translate(self, text, source, destination):
         translator = Translator()
         trans_text = translator.translate(text, src=source, dest=destination).text
-        # print(trans_text)
         return trans_text
     
     
@@ -619,8 +619,6 @@ class TranslatedWindow(QWidget):
         ok.move(130, 160)
         ok.setFixedSize(50, 30)
         ok.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
-        # ok.clicked.connect(languages.close)
-        #ok.clicked.connect(self.translate_)
         ok.clicked.connect(self.translate_)
         QWidget.setFocus(ok)
         self.window4.show()
@@ -712,7 +710,6 @@ class TranslatedWindow(QWidget):
             widget2 = QPushButton("OK", error_target)
             widget2.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
             widget2.clicked.connect(error_target.close)
-            #widget2.clicked.connect(self.transition)
             widget2.move(20, 150)
             widget2.setFixedSize(70, 40)
             widget2.clicked.connect(languages2.close)
@@ -730,7 +727,6 @@ class TranslatedWindow(QWidget):
     def translate_text(self):
 
         if Tbox.toPlainText() == "":
-            print("hi")
             mydialog = QDialog()
             mydialog.setWindowTitle("Error")
             mydialog.setGeometry(450, 200, 200, 200)
@@ -743,8 +739,7 @@ class TranslatedWindow(QWidget):
             widget2.move(110, 160)
             widget2.setFont(QtGui.QFont("Times", 12, QtGui.QFont.Bold))
             widget2.clicked.connect(mydialog.close)
-            #widget2.clicked.connect(self.goBack)
-
+            
             mydialog.exec()
 
         else:
@@ -757,7 +752,6 @@ class TranslatedWindow(QWidget):
     def translate(self, text, source, destination):
         translator = Translator()
         trans_text = translator.translate(text, src=source, dest=destination).text
-        # print(trans_text)
         textbox1.appendPlainText(trans_text)
         
         
