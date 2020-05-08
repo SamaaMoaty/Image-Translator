@@ -8,7 +8,7 @@ Demo Video: www.youtube.com
 
 ## Demo
    >![AppDemo](https://github.com/SamaaMoaty/Image-Translator-using-python/blob/master/Mobile%20App/IMG_8924.JPG)
-   >![AppDemo](https://github.com/SamaaMoaty/Image-Translator-using-python/blob/master/Mobile%20App/download.gif)
+   
    
 ## Desktop Interface 
    Using PyQt5
