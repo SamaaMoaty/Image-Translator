@@ -7,7 +7,7 @@ Demo Video: www.youtube.com
 
 
 ## Demo
-   >![AppDemo](MobileApp/IMG_8924.JPG)
+   >![AppDemo](https://github.com/SamaaMoaty/Image-Translator-using-python/blob/master/demo.mp4)
    
 ## Desktop Interface 
    Using PyQt5
