@@ -151,7 +151,7 @@ class Thread1 extends java.lang.Thread{
             try {
                 /*Authorization to IBM Service*/
                 Key = "Add your key here";
-                URL = "Add Translator URL";
+                URL = "Add your Translator URL here";
                 Authenticator authenticator = new IamAuthenticator(Key);
                 Discovery service = new Discovery("2018-05-01", authenticator);
                 LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01", authenticator);
