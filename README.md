@@ -9,7 +9,7 @@ Demo Video: www.youtube.com
 
 ## Desktop Interface 
    Using PyQt5
-   >Import desktop Interface in PyCharm
+   >Import Desktop Interface Folder in PyCharm
 
 ### Prerequisities:
 
