@@ -15,8 +15,7 @@ except ImportError:
 import pytesseract
 
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Samaa Moaty\4th CSE\Second Term\Image Processing\project\Image project Final\Tesseract-OCR\tesseract.exe"
-
+pytesseract.pytesseract.tesseract_cmd = r"C:\Your_Path\Tesseract-OCR\tesseract.exe"
 class mainWindow:
     def __init__(self) -> None:
         super().__init__()
