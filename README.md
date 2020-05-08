@@ -1,5 +1,5 @@
 # Image-Translator
-Image Translator Application for Desktop and Android Devices.
+Image Translator Application for Desktop and Android Devices
 
 Demo Video: www.youtube.com
 
