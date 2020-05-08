@@ -6,7 +6,9 @@ Demo Video: www.youtube.com
 >The application is used to translate different words from different languages through image. You can translate text in photos you've already taken. As well as taking a new photo in the Translate app and translate text on the captured photo using Optical Character Recognition (OCR) extracting text from images so that it can be edited, copied, formatted, indexed, searched, or translated covering 100+ languages.
 
 
-
+## Demo
+   ![Farmers Market Finder Demo](demo/demo.gif)
+   
 ## Desktop Interface 
    Using PyQt5
    >Import Desktop Interface Folder in PyCharm
