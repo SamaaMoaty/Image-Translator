@@ -16,15 +16,14 @@ import pytesseract
 
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Your_Path\Tesseract-OCR\tesseract.exe"
+
 class mainWindow:
     def __init__(self) -> None:
         super().__init__()
-        # self.app = QtWidgets.QApplication(sys.argv)
         self.window3 = QtWidgets.QMainWindow()
         self.init_ui()
-        #self.imageCaptureDelegate = ImageCapture()
-
-        # Samaa
+    
+ # Initializing Window Components
 
     def init_ui(self) -> None:
         self.__stylingWindowOne()
@@ -37,11 +36,11 @@ class mainWindow:
         img_transl.clicked[bool].connect(self.imag_trans)
         img_transl.setGeometry(50, 370, 180, 40)
         img_transl.setStyleSheet("background-color:#3700B3 ; font : 12px;font-weight: bold ; color : #fff")
-        #img_transl.setIcon(QtGui.QIcon("img_trans.png"))
+        
 
         self.window3.show()
-
-        # Samaa :Styling function
+        
+# Styling Window Components
 
     def __stylingWindowOne(self):
         self.window3.setWindowIcon(QtGui.QIcon("home.png"))
@@ -63,9 +62,13 @@ class mainWindow:
         logo_label.setPixmap(logo2)
         #self.resize(logo.width(), logo.height())
 
+ #Load Image Translator Window
+
     def imag_trans(self):
         self.window = TranslatorGUI()
         self.window3.hide()
+  
+  #Load Text Translator Window
 
     def trans(self):
         self.window1 = text_trans()
