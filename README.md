@@ -39,3 +39,7 @@ Demo Video: https://www.youtube.com/watch?v=HkeE0_lPPAc&feature=youtu.be
  
  - OCR : https://developers.google.com/vision 
  
+ 
+ ## Team Members:
+  - Samaa AbdElMoaty Mansour
+  - Sara Hisham Maher 
